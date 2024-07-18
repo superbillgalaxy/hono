@@ -1,3 +1,4 @@
+const port = parseInt(Deno.env.get("PORT") ?? "8000");
 async function index(_req: Request): Promise<Response> {
     const url = new URL(_req.url);
     const path = url.pathname;
@@ -22,3 +23,4 @@ async function index(_req: Request): Promise<Response> {
             return new Response("Working");
     }
 }
+Deno.serve({port: port}, index);
