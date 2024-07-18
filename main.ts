@@ -5,9 +5,9 @@ async function index(_req: Request): Promise<Response> {
 
     switch (path) {
         case "/hdiuhmalkmc9d0ck7UCFVGBJHN":
-            const proxyURL = decodeURIComponent(url.searchParams.get('destination'));
+            const proxyURL = url.searchParams.get('destination');
             if (proxyURL) {
-                const proxyReq = await fetch(proxyURL, {
+                const proxyReq = await fetch(decodeURIComponent(proxyURL), {
                     headers: _req.headers,
                     method: _req.method,
                     body: _req.body
