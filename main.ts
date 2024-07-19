@@ -7,13 +7,12 @@ async function index(_req: Request): Promise<Response> {
             const doodURL = url.searchParams.get('url');
             if (doodURL) {
                 try {
-                    const doodReq = await fetch(`https://tempguy-scarletsole.web.val.run/dood/${encodeURIComponent(doodURL)}`, {
+                    const doodReq = await fetch(`https://tempguy-scarletsole.web.val.run/dood/${doodURL}`, {
                         headers: _req.headers,
                         method: _req.method,
                         body: _req.body
                     });
-                    const respText = await doodReq.text();
-                    return new Response(respText, {
+                    return new Response(doodReq.body, {
                         headers: doodReq.headers,
                         status: doodReq.status
                     });
