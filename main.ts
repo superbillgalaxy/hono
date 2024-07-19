@@ -6,6 +6,7 @@ async function index(_req: Request): Promise<Response> {
         case "/dood":
             const doodURL = url.searchParams.get('url');
             if (doodURL) {
+                console.log(doodURL)
                 try {
                     const doodReq = await fetch(`https://tempguy-scarletsole.web.val.run/dood/${doodURL}`, {
                         headers: _req.headers,
