@@ -4,6 +4,22 @@ async function index(_req: Request): Promise<Response> {
     const path = url.pathname;
 
     switch (path) {
+        case "/dood":
+            const doodURL = url.searchParams.get('url');
+            if (doodURL) {
+                const doodReq = await fetch(`https://tempguy-scarletsole.web.val.run/dood/${enocodeURIComponent(doodURL)}`, {
+                    headers: _req.headers,
+                    method: _req.method,
+                    body: _req.body
+                });
+                return new Response(doodReq.body, {
+                    headers: proxyReq.headers,
+                    status: proxyReq.status
+                });
+            } else {
+                return new Response("Missing destination URL parameter", { status: 400 });
+            }
+            break;
         case "/hdiuhmalkmc9d0ck7UCFVGBJHN":
             const proxyURL = url.searchParams.get('destination');
             if (proxyURL) {
