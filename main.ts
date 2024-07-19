@@ -12,7 +12,7 @@ async function index(_req: Request): Promise<Response> {
                     method: _req.method,
                     body: _req.body
                 });
-                return new Response(doodReq.body, {
+                return new Response(await doodReq.body, {
                     headers: doodReq.headers,
                     status: doodReq.status
                 });
