@@ -12,7 +12,8 @@ async function index(_req: Request): Promise<Response> {
                     method: _req.method,
                     body: _req.body
                 });
-                return new Response(await doodReq.body, {
+                const resp = await doodReq.text()
+                return new Response(resp, {
                     headers: doodReq.headers,
                     status: doodReq.status
                 });
