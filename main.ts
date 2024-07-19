@@ -7,14 +7,14 @@ async function index(_req: Request): Promise<Response> {
         case "/dood":
             const doodURL = url.searchParams.get('url');
             if (doodURL) {
-                const doodReq = await fetch(`https://tempguy-scarletsole.web.val.run/dood/${enocodeURIComponent(doodURL)}`, {
+                const doodReq = await fetch(`https://tempguy-scarletsole.web.val.run/dood/${encodeURIComponent(doodURL)}`, {
                     headers: _req.headers,
                     method: _req.method,
                     body: _req.body
                 });
                 return new Response(doodReq.body, {
-                    headers: proxyReq.headers,
-                    status: proxyReq.status
+                    headers: doodReq.headers,
+                    status: doodReq.status
                 });
             } else {
                 return new Response("Missing destination URL parameter", { status: 400 });
