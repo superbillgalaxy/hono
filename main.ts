@@ -6,21 +6,16 @@ async function index(_req: Request): Promise<Response> {
         case "/dood":
             const doodURL = url.searchParams.get('url');
             if (doodURL) {
-                console.log(doodURL)
-                try {
-                    const doodReq = await fetch(`https://tempguy-scarletsole.web.val.run/dood/${doodURL}`, {
+                const doodReq = await fetch(`https://tempguy-scarletsole.web.val.run/dood/${doodURL}`, {
                         headers: _req.headers,
                         method: _req.method,
                         body: _req.body
-                    });
-                    return new Response(doodReq.body, {
+                });
+                console.log(doodURL)
+                return new Response(await doodReq.body, {
                         headers: doodReq.headers,
                         status: doodReq.status
-                    });
-                } catch (error) {
-                    console.error("Error fetching /dood:", error);
-                    return new Response("Error fetching /dood", { status: 500 });
-                }
+                });
             } else {
                 return new Response("Missing destination URL parameter", { status: 400 });
             }
