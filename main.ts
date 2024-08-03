@@ -207,7 +207,7 @@ app.get("/watch/:id/:ep/:dub", async (c) => {
       const _ = data.url.split("/")[4];
       switch (data.name) {
         case "Streamwish":
-          results.push(await streamwish({ url: "https://awish.pro/e/" + _ }));
+          results.push(await streamwish({ url: "https://streamwish.to/" + _ }));
           break;
         case "Doodstream":
           results.push(await doodstream({ url: "https://d000d.com/e/" + _ }));
